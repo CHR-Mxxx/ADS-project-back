@@ -3,6 +3,8 @@ from typing import Annotated
 from fastapi import Depends, FastAPI, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordBearer
+from fastapi import Body
+from pydantic import BaseModel
 
 from schemas.captchaEmail import CaptchaEmail
 
@@ -20,15 +22,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get("/")
 async def read_root():
     return {"message": "Welcome to the FastAPI Auth App!"}
+
 
 @app.get("/items/{item_id}")
 async def read_item(item_id: int, token: Annotated[str, Depends(oauth2_scheme)]):
     return {"token": token}
 
+
 @app.post("/captcha")
-async def send_captcha(email:CaptchaEmail):
-    send_email(email, background_tasks=BackgroundTasks())
+async def send_captcha(email: CaptchaEmail):
+    answer = send_email(email.email, background_tasks=BackgroundTasks())
     return {"message": "Captcha sent successfully to the provided email."}
