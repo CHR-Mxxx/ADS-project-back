@@ -4,7 +4,7 @@
 "1":
 {
 "name":"Glaciaxion",
-"ez":{"rank":1.0,"combo":66},
+"ez":{"rank":1.0,"combo":66,"tap":34,"hold":25,"drag":1,"flick":6},
 "hd":{"rank":6.5,"combo":393},
 "in":{"rank":12.6,"combo":729},
 "legacy":{"rank":11.2,"combo":611}
@@ -524,8 +524,10 @@
 "in":{"rank":15.7,"combo":1137},
 "at":{"rank":16.6,"combo":1344}
 }
+}
 },
-"external_chapter_jixingwei":{
+"external_chapter":{
+"camellia":{   
 "1":
 {
 "name":"S.A.T.E.L.L.I.T.E.",
