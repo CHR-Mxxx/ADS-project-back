@@ -59,7 +59,7 @@ def calculate_possible_scores(total_notes, target_score):
             if (
                 abs((judgement_score + actual_combo_score) - target_score) < 1
             ):  # 允许微小浮点误差
-                if perfect + good < required_combo:  # 连击数不能超过命中数
+                if perfect + good > required_combo:  # 连击需要超过命中数
                     possibilities.append(
                         {
                             "perfect": perfect,
