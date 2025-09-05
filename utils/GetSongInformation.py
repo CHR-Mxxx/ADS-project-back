@@ -1,5 +1,5 @@
 import json
-from enum import Enum
+from os import path
 
 SongRelative1 = {
     "1": "main_chapter",
@@ -42,22 +42,33 @@ SongRelative2 = {
 }
 
 
-def control_Score(songId: str, score: int):
+def get_song_information(songId: str):
     if songId[0] == "5":
         song_inChapter, song_chapterId = songId.split(".")
         print(song_inChapter, song_chapterId)
         song_inChapterName = SongRelative1[song_inChapter]
-        # with open("/ADS-project-back/assets/song_information.json", "r") as f:
-        #     songData = json.load(f)
-        #     song = songData[song_inChapterName][song_chapterId]
-        #     print(song["name"])
+        with open(
+            path.join(path.dirname(__file__), "../assets/SongInformation.json"),
+            "r",
+            encoding="utf-8",
+        ) as f:
+            songData = json.load(f)
+            song = songData[song_inChapterName][song_chapterId]
+            print(song["name"])
+            return song
+
     else:
         song_Mchapter, song_MinChapter, song_chapterId = songId.split(".")
         song_inChapter = f"{song_Mchapter}.{song_MinChapter}"
         print(song_inChapter, song_chapterId)
         song_MChapterName = SongRelative1[song_Mchapter]
         song_inChapterName = SongRelative2[song_inChapter]
-        # with open("../assets/song_information.json", "r") as f:
-        #     songData = json.load(f)
-        #     song = songData[song_MChapterName][song_inChapterName][song_chapterId]
-        #     print(song["name"])
+        with open(
+            path.join(path.dirname(__file__), "../assets/SongInformation.json"),
+            "r",
+            encoding="utf-8",
+        ) as f:
+            songData = json.load(f)
+            song = songData[song_MChapterName][song_inChapterName][song_chapterId]
+            print(song["name"])
+            return song

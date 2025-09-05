@@ -19,7 +19,7 @@ from email.utils import parseaddr, formataddr
 import redis
 from datetime import datetime, timedelta
 from schemas.user import UserCreate, UserPublic
-from services.mydb import get_db
+from services.MyDb import get_db
 
 load_dotenv()
 MAIL_USERNAME = os.getenv("MAIL_USERNAME")
